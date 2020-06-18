@@ -1,6 +1,8 @@
 <h1>Consumers</h1>
 
-<a href="/consumers/create">add new customer</a>
+<a href="/consumers/create">Add new customer</a>
+<a href="/consumers?active=1">Active</a>
+<a href="/consumers?active=0">Inactive</a>
 
 @foreach( $consumers as $consumer )
     <p><strong>

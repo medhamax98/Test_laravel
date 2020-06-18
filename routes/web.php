@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//use App\Mail\WelcomeMail;
+//use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+Route::get('/email', function () {
+    
+    //return view('welcome');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Mail::to('email@email.com')->send(new WelcomeMail());
+
+    return new WelcomeMail();
+});*/
 
 Route::get('/hello', function(){
     return view('subviews.hello');

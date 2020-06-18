@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 use App\Consumer;
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ConsumerController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $consumers =Consumer::where('active',1)->get();
+        //dd($request->query('active'));
+
+        $consumers =Consumer::where('active', $request->query('active',1))->get();
         return view('consumer.index', compact('consumers'));
     }
 
     public function create(){
         $consumer = new Consumer();
+
         return view('consumer.create', compact('consumer'));
     }
 
@@ -24,6 +29,9 @@ class ConsumerController extends Controller
         ]);*/
 
         $consumer = Consumer::create($this->validatedData());
+
+        Mail::to($consumer->email)->send(new WelcomeMail());
+
         return redirect('/consumers/' . $consumer->id);
     }
 

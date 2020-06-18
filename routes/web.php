@@ -22,11 +22,14 @@ Route::get('/hello', function(){
 });
 
 Route::get('/customers','CustomerController@index');
-
 Route::get('/consumers','ConsumerController@index');
-
 Route::get('/consumers/create','ConsumerController@create');
-
 Route::post('/consumers','ConsumerController@store');
+Route::get('/consumers/{consumer}','ConsumerController@show');
+Route::get('/consumers/{consumer}/edit','ConsumerController@edit');
+Route::patch('/consumers/{consumer}','ConsumerController@update');
+Route::delete('/consumers/{consumer}','ConsumerController@destroy');
+
+
 
 ?>

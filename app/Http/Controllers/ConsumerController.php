@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class ConsumerController extends Controller
 {
     public function index(){
-        $consumers =Consumer::all();
+
+        $consumers =Consumer::where('active',1)->get();
         return view('consumer.index', compact('consumers'));
     }
 

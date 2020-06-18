@@ -14,9 +14,10 @@ class CreateConsumersTable extends Migration
     public function up()
     {
         Schema::create('consumers', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
+            $table->unsignedInteger('active')->default(1);
             $table->timestamps();
         });
     }
